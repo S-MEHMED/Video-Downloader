@@ -1,0 +1,147 @@
+{% extends 'ytb_main.html' %}
+{% load static %}
+
+
+
+<!-- for table to show results -->
+
+
+{% block result %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+    .section {
+        width: 57%;
+        max-height: 250px;
+        padding: 1rem;
+        overflow-y: auto;
+        direction: ltr;
+        scrollbar-color: #d4aa70 #e4e4e4;
+        scrollbar-width: thin;
+
+    }
+
+    .section::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    .section::-webkit-scrollbar-track {
+        background-color: #e4e4e4;
+        border-radius: 100px;
+    }
+
+    .section::-webkit-scrollbar-thumb {
+        border-radius: 100px;
+        border: 6px solid rgba(0, 0, 0, 0.18);
+        border-left: 0;
+        border-right: 0;
+        background-color: #009970;
+    }
+
+    body {
+        font-family: "system-ui";
+        line-height: 1.4;
+        padding: 1rem;
+        background-color: #f7f7f7;
+        min-height: 1200px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+</style>
+
+
+
+<center>
+    <div class="section">
+        <!-- <h2>Title</h2> -->
+
+
+
+
+
+        <table class="table table-bordered table-striped mb-0 ">
+            <thead>
+                <tr>
+                    <th scope="col">Titles</th>
+                    <th scope="col">Click to Download</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for i,t in values %}
+                <tr>
+                    <th scope="row">{{t}}</th>
+                    <th scope="row">
+                        <form action="s" method="POST">
+                            {% csrf_token %}
+                            <input type="text" name='id_value' id='id_value' value="{{i}}" hidden>
+
+                            <div class="logo">
+                                <button type="submit" class="button"
+                                    style="background-color:#009970;"><span>Download</span></button>
+                            </div>
+                        </form>
+
+                    </th>
+
+                </tr>
+                {%endfor%}
+
+            </tbody>
+        </table>
+
+    </div>
+</center>
+
+<!-- For Titles to Show -->
+<!-- <div class="scroll-bg">
+    <div class="scroll-div">
+        <div class="scroll-object">
+            <table class="table">
+
+                <thead class="table-dark">
+                    <tr>
+
+                        <th scope="col">Titles</th>
+                        <th scope="col">Select Video By Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    {% for i,t in values %}
+
+                    <tr>
+                        <th scope="row">{{t}}</th>
+
+                        <th scope="row">
+                            <form action="s" method="POST">
+                                {% csrf_token %}
+                                <input type="text" name='id_value' id='id_value' value="{{i}}" hidden>
+
+                                <div class="logo">
+                                    <button type="submit" class="button"
+                                        style="background-color:#009970;"><span>Download</span></button>
+                                </div>
+                            </form>
+
+                        </th>
+                    </tr>
+
+
+                    {%endfor%}
+                </tbody>
+
+            </table>
+        </div>
+
+
+    </div>
+</div>
+</div> -->
+
+
+
+{%endblock%}

@@ -1,0 +1,12 @@
+{% extends 'ytb_main.html' %}
+
+
+
+
+
+
+{% block result %}
+{% for i,r,e,s,t in val %}
+<p>{{i}},{{r}},{{e}},{{s}},{{t}}</p>
+{% endfor %}
+{% endblock %}
